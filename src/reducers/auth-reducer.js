@@ -29,7 +29,7 @@ export default function reducer(state = initialState, action){
       return {...state, loading: false, authToken: null, user: null}
     
     case AUTH_ERROR:
-      return {...state, loading: false, error: action.error}
+      return {...state, loading: false, error: action.error.message}
     
     case STAY_LOGGEDIN:
       return {...state, loading: false, authToken: action.authToken}

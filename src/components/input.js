@@ -1,10 +1,10 @@
 import React, {Fragment, Component} from 'react';
 import {connect} from 'react-redux';
-import {authRequest} from '../actions/auth'
+import {login} from '../actions/auth'
 export class Input extends Component {
   onSubmit(e) {
     e.preventDefault();
-    this.props.login({username: this.username, password: this.password});
+    this.props.login({username: this.username.value, password: this.password.value});
   };
 
   render(){
@@ -16,7 +16,10 @@ export class Input extends Component {
           <input aria-label="input" className="userAuthInput" type="password" placeholder="enter password" ref={input => this.password = input}/>
           <button type="submit">Login</button>
         </form>
-        {this.props.error ? <div>{this.props.error}</div> : null}
+        <div>
+          {this.props.error ? this.props.error: ""}
+        </div>
+        
       </Fragment>
 // two input fields --> username, password
     )
@@ -24,7 +27,7 @@ export class Input extends Component {
 }
 
 const mapDispatchToProps = {
-  login: authRequest
+  login
 }
 
 const mapStateToProps = (state) => {
