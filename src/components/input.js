@@ -2,13 +2,13 @@ import React, {Fragment, Component} from 'react';
 import {connect} from 'react-redux';
 import {login} from '../actions/auth'
 export class Input extends Component {
+
   onSubmit(e) {
     e.preventDefault();
     this.props.login({username: this.username.value, password: this.password.value});
   };
 
   render(){
-    console.log(this.props)
     return (
       <Fragment>
         <form onSubmit={e => this.onSubmit(e)}>
@@ -31,8 +31,9 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return ({
-    error: state.auth.error
+    error: state.auth.error,
 })}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input)

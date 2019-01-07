@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
-import {Route, withRouter, Switch} from 'react-router-dom';
+import {Route, withRouter, Switch, Redirect} from 'react-router-dom';
 import RegistrationPage from './components/registration-page'
-import {Login} from './components/login-page'
+import {connect} from 'react-redux';
+import {Login} from './components/login-page';
+import Dashboard from './components/dashboard';
 
 import './App.css';
+// import { mapStatetoProps } from './components/registration-form';
 
 class App extends Component {
   render() {
-    return (
+    console.log(this.props)
+    return(
      
       <Switch>
+        <Route exact path='/dashboard' component={Dashboard} />
         <Route exact path='/login' component={Login}/>
         <Route exact path="/register" component={RegistrationPage} />
       </Switch>
     );
   }
 }
-
-export default withRouter(App);
+const mapStatetoProps = (state) => {
+  return({
+    user : state.auth.user 
+})}
+export default withRouter(connect(mapStatetoProps)(App));
