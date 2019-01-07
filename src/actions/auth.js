@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import {API_BASE_URL} from '../config';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
+import {normalizeResponseErrors} from './utils'
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
@@ -56,16 +57,16 @@ export const login = user => dispatch => {
       },
       body: JSON.stringify(user)
     })
+  .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
   .then(({authToken}) => {
-    console.log(authToken)
     storeAuthInfo(authToken, dispatch);
     stayLoggedIn(authToken)
   })
   .catch(err => {
-    console.log(err);
+    const {code} = err;
     err.message = 
-      err  === 401 ? 'Incorrect username or passowrd' : 'Unable to login';
+      code  === 401 ? 'Incorrect username or password' : 'Unable to login';
     dispatch(authError(err)); 
   })
   );

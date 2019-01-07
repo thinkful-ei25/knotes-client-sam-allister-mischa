@@ -6,7 +6,8 @@ export class Login extends Component {
   render(){
     return (
       <Fragment>
-        <Input/>
+        <h2>Login to Knotes!</h2>
+        <Input />
       </Fragment>
 // two input fields --> username, password
     )
