@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 import RegistrationForm from './registration-form';
 
 export function RegistrationPage(props) {
@@ -8,6 +8,7 @@ export function RegistrationPage(props) {
     if (props.registered) {
         return <Redirect to="/login"></Redirect>
     }
+    
     
     return (
         <div>
@@ -18,13 +19,14 @@ export function RegistrationPage(props) {
             <p>After reviewing your feedback, click next to move on to the next note.</p>
             <p>Register to begin. After registration, you will be taken to the login page</p>
             <RegistrationForm />
-            
+            <p>Already registered? <Link to="/login">Log In</Link></p>
         </div>
     );
 }
 
 const mapStateToProps = state => ({
-    registered: state.register.registered
+    registered: state.register.registered,
+    
     });
 
 export default connect(mapStateToProps)(RegistrationPage);
