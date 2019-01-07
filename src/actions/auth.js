@@ -45,8 +45,7 @@ const storeAuthInfo = (authToken, dispatch) => {
     dispatch(authSuccess(decodedToken.user));
     saveAuthToken(authToken);
 }
-export const login = (username, password) => dispatch => {
-  console.log(username, password)
+export const login = user => dispatch => {
   dispatch(authRequest());
   return (
     fetch((`${API_BASE_URL}/auth/login`), {
@@ -55,9 +54,7 @@ export const login = (username, password) => dispatch => {
         'Accept':'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        username, password
-      })
+      body: JSON.stringify(user)
     })
   .then(res => res.json())
   .then(({authToken}) => {
