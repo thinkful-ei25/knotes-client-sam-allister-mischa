@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import {API_BASE_URL} from '../config';
-import {loadAuthToken, saveAuthToken, clearAuthToken} from '../local-storage';
+import {saveAuthToken, clearAuthToken} from '../local-storage';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
@@ -46,9 +46,10 @@ const storeAuthInfo = (authToken, dispatch) => {
     saveAuthToken(authToken);
 }
 export const login = (username, password) => dispatch => {
+  console.log(username, password)
   dispatch(authRequest());
   return (
-    fetch(`${API_BASE_URL}/auth/login`), {
+    fetch((`${API_BASE_URL}/auth/login`), {
       method: 'POST',
       headers: {
         'Accept':'application/json',
@@ -57,18 +58,20 @@ export const login = (username, password) => dispatch => {
       body: JSON.stringify({
         username, password
       })
-    } 
-  )
+    })
   .then(res => res.json())
   .then(({authToken}) => {
+    console.log(authToken)
     storeAuthInfo(authToken, dispatch);
     stayLoggedIn(authToken)
   })
   .catch(err => {
+    console.log(err);
     err.message = 
       err  === 401 ? 'Incorrect username or passowrd' : 'Unable to login';
     dispatch(authError(err)); 
   })
+  );
 }
 
 export const refreshauthToken = () => (dispatch, getState) => {
