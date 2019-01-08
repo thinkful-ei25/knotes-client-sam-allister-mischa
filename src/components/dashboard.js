@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux'
 import requiresLogin from './requires_login';
+import Question from './question-answer';
 // import { mapStatetoProps } from './components/registration-form';
 
 function Dashboard(props) {
@@ -10,7 +11,10 @@ function Dashboard(props) {
       return <Redirect to="/" />
     }
     return(
+     <div>
      <h2>Welcome {props.user ? props.user.username : ''}</h2>
+     <Question />
+     </div>
     );
 }
 
