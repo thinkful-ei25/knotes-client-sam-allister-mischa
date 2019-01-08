@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Route, withRouter, Switch, Redirect} from 'react-router-dom';
 import RegistrationPage from './components/registration-page'
 import {connect} from 'react-redux';
-import {Login} from './components/login-page';
+import Login from './components/login-page';
 import Dashboard from './components/dashboard';
 
 import './App.css';

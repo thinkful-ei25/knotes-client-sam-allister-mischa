@@ -20,9 +20,9 @@ export const authRequest = () => ({
 })
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const authSuccess = userName => ({
+export const authSuccess = user => ({
   type: AUTH_SUCCESS,
-  userName
+  user
 })
 
 export const AUTH_ERROR = 'AUTH_ERROR';
