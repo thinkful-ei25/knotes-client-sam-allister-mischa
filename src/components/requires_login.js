@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 export default () => Component => {
     function RequiresLogin(props) {
-      const {authenticating, user, error, ...passThroughProps} = props;
-        console.log(user)  
+      const {authenticating, authToken, error, ...passThroughProps} = props;
+        // console.log(user)  
         if (authenticating) {
             return <div>Logging in...</div>;
-        } else if (!user || error) {
+        } else if (!authToken || error) {
             return <Redirect to="/" />;
         }
         return <Component {...passThroughProps} />;
@@ -18,7 +18,8 @@ export default () => Component => {
       console.log(state);
       return({
         authenticating: state.auth.loading,
-        user: state.auth.user !== null,
+        authToken : state.auth.authToken,
+        // user: state.auth.user !== null,
         error: state.auth.error
     })};
     return connect(mapStateToProps)(RequiresLogin);
