@@ -19,6 +19,10 @@ export class Question extends React.Component {
         }
     }
 
+    nextQuestion() {
+        this.props.dispatch(nextQuestion())
+    }
+
     render() {
         
         if (this.props.currentNote.note) {
@@ -28,7 +32,7 @@ export class Question extends React.Component {
                 <img src={this.props ? this.props.currentNote.note.image : '#'} alt="note"></img>
                 <label htmlFor="answer">Answer:</label>
                 <input type="text" name="answer" id="answer"></input>
-                <input type ="submit">type="submit"></input>
+                <input type ="submit">Submit</input>
             </form>
             )
         } else {

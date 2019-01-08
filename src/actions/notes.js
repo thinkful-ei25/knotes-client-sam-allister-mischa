@@ -6,15 +6,9 @@ export const fetchNoteRequest = () => ({
 });
 
 export const FETCH_NOTE_SUCCESS = 'FETCH_NOTE_SUCCESS';
-<<<<<<< HEAD
 export const fetchNoteSuccess = note => ({
   type: FETCH_NOTE_SUCCESS,
   note
-=======
-export const fetchNoteSuccess = notes => ({
-  type: FETCH_NOTE_SUCCESS,
-  notes
->>>>>>> 1002af00942ef299b12ae40b9c0ddabb10c7f0d8
 });
 
 export const FETCH_NOTE_ERROR = 'FETCH_NOTE_ERROR';
@@ -48,3 +42,4 @@ export const fetchNote = () => (dispatch, getState) => {
     .then(notes=>dispatch(fetchNoteSuccess(notes)))
     .catch(err=>dispatch(fetchNoteError(err)));
 } 
+
