@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchNote} from '../actions/notes'
+import {fetchNote, correctAnswer, incorrectAnswer} from '../actions/notes'
 
 export class Question extends React.Component {
     componentDidMount() {
@@ -8,8 +8,15 @@ export class Question extends React.Component {
         this.props.dispatch(fetchNote());
     }
 
-    onSubmit() {
-
+    handleSubmit(e){
+        e.preventDefault()
+        let answer = e.target.answer.value
+        console.log(answer)
+        if (answer.toUpper() === this.props.currentNote.note.note) {
+            this.props.dispatch(correctAnswer())
+        } else {
+            this.props.dispatch(incorrectAnswer())
+        }
     }
 
     render() {
@@ -17,12 +24,12 @@ export class Question extends React.Component {
         if (this.props.currentNote.note) {
 
         return (
-            <div>
+            <form onSubmit={(e) => this.handleSubmit(e)}>
                 <img src={this.props ? this.props.currentNote.note.image : '#'} alt="note"></img>
                 <label htmlFor="answer">Answer:</label>
                 <input type="text" name="answer" id="answer"></input>
-                <button type="submit"></button>
-            </div>
+                <input type ="submit">type="submit"></input>
+            </form>
             )
         } else {
             return (
