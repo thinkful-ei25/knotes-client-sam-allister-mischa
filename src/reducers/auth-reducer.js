@@ -22,8 +22,10 @@ export default function reducer(state = initialState, action){
     
     case SET_AUTH_TOKEN:
       return {...state, loading: false, authToken: action.authToken}
+    
     case AUTH_SUCCESS:
-      return {...state, loading: false, user: action.userName}
+    console.log(action.user)
+      return {...state, loading: false, user: action.user}
     
     case CLEAR_AUTH:
       return {...state, loading: false, authToken: null, user: null}

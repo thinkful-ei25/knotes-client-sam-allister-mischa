@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import {withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux'
-
+import requiresLogin from './requires_login';
 // import { mapStatetoProps } from './components/registration-form';
 
-class Dashboard extends Component {
-  render() {
-    console.log(this.props.user)
-    return(
-     <h2>Welcome {this.props.user ? this.props.user.name : 'null'}</h2>
-    );
-  }
+function Dashboard(props) {
+  return(
+    <h2>Welcome {props.user ? props.user.username : ''}</h2>
+  );
 }
+
 const mapStatetoProps = (state) => {
-  console.log(state);
   return(
     {
-    user : state.auth ? state.auth.user : null
+      loading : state.auth ? state.auth.loading : null,
+      authToken : state.auth ? state.auth.authToken : null,
+      user : state.auth.user 
     }
   )
 }
-export default withRouter(connect(mapStatetoProps)(Dashboard));
+export default requiresLogin()(connect(mapStatetoProps)(Dashboard));
