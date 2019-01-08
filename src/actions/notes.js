@@ -2,18 +2,18 @@ import {API_BASE_URL} from '../config';
 
 export const FETCH_NOTE_REQUEST = 'FETCH_NOTE_REQUEST';
 export const fetchNoteRequest = () => ({
-  type: FETCH_NOTES_REQUEST
+  type: FETCH_NOTE_REQUEST
 });
 
 export const FETCH_NOTE_SUCCESS = 'FETCH_NOTE_SUCCESS';
-export const fetchNoteSuccess = notes => ({
-  type: FETCH_NOTES_SUCCESS,
-  notes
+export const fetchNoteSuccess = note => ({
+  type: FETCH_NOTE_SUCCESS,
+  note
 });
 
 export const FETCH_NOTE_ERROR = 'FETCH_NOTE_ERROR';
 export const fetchNoteError = error => ({
-  type: FETCH_NOTES_ERROR,
+  type: FETCH_NOTE_ERROR,
   error
 });
 
