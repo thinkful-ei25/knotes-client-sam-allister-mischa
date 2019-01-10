@@ -42,3 +42,4 @@ export const fetchNote = () => (dispatch, getState) => {
     .then(notes=>dispatch(fetchNoteSuccess(notes)))
     .catch(err=>dispatch(fetchNoteError(err)));
 } 
+
