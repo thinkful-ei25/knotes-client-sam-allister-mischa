@@ -21,7 +21,7 @@ export const ANSWER_ACTION_SUCCESS = 'ANSWER_ACTION_SUCCESS';
 export const answerActionSuccess = (note) => ({
   type: ANSWER_ACTION_SUCCESS,
   note
-})
+});
 
 export const NEXT_NOTE = 'NEXT_NOTE';
 export const nextNote = (next, nextnext) => ({
@@ -48,13 +48,12 @@ export const fetchNote = () => (dispatch, getState) => {
         error.code = res.status;
         return Promise.reject(error);
       }
-      console.log(res);
       return res;
     })
     .then(res=>res.json())
     .then(notes=>dispatch(fetchNoteSuccess(notes)))
     .catch(err=>dispatch(fetchNoteError(err)));
-}
+};
 
 export const answerAction = (answer) => (dispatch, getState) => {
   console.log('answerinsideaction:', answer)
@@ -82,5 +81,47 @@ export const answerAction = (answer) => (dispatch, getState) => {
   .then(res=>res.json())
   .then(notes=>dispatch(answerActionSuccess(notes)))
   .catch(err=>dispatch(fetchNoteError(err)));
+};
+
+
+export const FETCH_PROGRESS_REQUEST = 'FETCH_PROGRESS_REQUEST';
+export const fetchProgressRequest = () => ({
+  type: FETCH_PROGRESS_REQUEST
+});
+
+export const FETCH_PROGRESS_SUCCESS = 'FETCH_PROGRESS_SUCCESS';
+export const fetchProgressSuccess = progress => ({
+  type: FETCH_PROGRESS_SUCCESS,
+  progress
+});
+
+export const FETCH_PROGRESS_ERROR = 'FETCH_PROGRESS_ERROR';
+export const fetchProgressError = error => ({
+  type: FETCH_PROGRESS_ERROR,
+  error
+});
+
+export const fetchProgress = () => (dispatch, getState) => {
+  dispatch(fetchProgressRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/notes/progress`,{
+    method: 'GET',
+    headers: {AUthorization: `Bearer ${authToken}`}
+  })
+    .then((res)=>{
+      if(!res.ok){
+        const contentType = res.headers.get('content-type');
+        if(contentType && contentType.startsWith('application/json')){
+          return res.json().then(err=> Promise.reject(err));
+        }
+        const error = new Error(res.status);
+        error.code = res.status;
+        return Promise.reject(error);
+      }
+      return res;
+    })
+    .then(res=>res.json())
+    .then(arr=>dispatch(fetchProgressSuccess(arr)))
+    .catch(err=>dispatch(fetchProgressError(err)));
 }
 
