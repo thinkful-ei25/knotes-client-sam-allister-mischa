@@ -3,14 +3,18 @@ import {
   FETCH_NOTE_SUCCESS,
   FETCH_NOTE_ERROR,
   ANSWER_ACTION_SUCCESS,
-  NEXT_NOTE
+  NEXT_NOTE,
+  FETCH_PROGRESS_ERROR,
+  FETCH_PROGRESS_REQUEST,
+  FETCH_PROGRESS_SUCCESS
 } from '../actions/notes';
 
 const initialState = {
   note : null,
   next: null,
   loading: false,
-  error: null
+  error: null,
+  progress: []
 }
 
 export default function noteReducer(state=initialState, action){
@@ -18,9 +22,7 @@ export default function noteReducer(state=initialState, action){
     return {
       ...state,
       loading: true,
-      error: null,
-      
-      
+      error: null
     };
   } else if(action.type === FETCH_NOTE_SUCCESS){
     return {
@@ -28,17 +30,14 @@ export default function noteReducer(state=initialState, action){
       loading: false,
       note: action.note.note,
       next: action.note.next,
-      error: null,
-      
-      
+      error: null
     };
   } else if(action.type === FETCH_NOTE_ERROR){
     return {
       ...state,
       loading: false,
       note: null,
-      error: action.error,
-      
+      error: action.error
     };
   }
   else if(action.type === ANSWER_ACTION_SUCCESS) {
@@ -59,6 +58,26 @@ export default function noteReducer(state=initialState, action){
       feedback: null,
       feedbackNext: null
     }
+  } else if(action.type === FETCH_PROGRESS_REQUEST){
+    return {
+      ...state,
+      loading: true,
+      error: null,
+    };
+  } else if(action.type === FETCH_PROGRESS_ERROR){
+    return {
+      ...state,
+      loading: false,
+      progress: [],
+      error: action.error
+    };
+  } else if(action.type === FETCH_PROGRESS_SUCCESS){
+    return {
+      ...state,
+      loading: false,
+      progress: action.progress,
+      error: null
+    };
   }
   return state;
 }
