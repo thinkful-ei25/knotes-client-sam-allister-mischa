@@ -6,9 +6,9 @@ export const fetchNoteRequest = () => ({
 });
 
 export const FETCH_NOTE_SUCCESS = 'FETCH_NOTE_SUCCESS';
-export const fetchNoteSuccess = notes => ({
+export const fetchNoteSuccess = note => ({
   type: FETCH_NOTE_SUCCESS,
-  notes
+  note
 });
 
 export const FETCH_NOTE_ERROR = 'FETCH_NOTE_ERROR';
