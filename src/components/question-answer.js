@@ -13,10 +13,16 @@ export class Question extends React.Component {
 		let answer = e.target.answer.value
 		answer = answer.toUpperCase()
 		console.log(answer)
-		if (answer) {
+		if (answer && !this.props.note.submitted) {
 			this.props.dispatch(answerAction(answer))
 		}
 
+	}
+
+	handleNext(e) {
+		e.preventDefault()
+		console.log('next clicked')
+		// this.props.dispatch(nextNote())
 	}
 
 	render() {
@@ -30,6 +36,7 @@ export class Question extends React.Component {
 						<label htmlFor="answer">Answer:</label>
 						<input type="text" name="answer" id="answer"></input>
 						<input type="submit" value="submit"></input>
+						<button onClick={(e) => this.handleNext(e)}>Next</button>
 					</form>
 					<p>{this.props.note.feedback}</p>
 				</div>
@@ -46,7 +53,8 @@ export class Question extends React.Component {
 export const mapStatetoProps = state => {
 	console.log('questions:', state)
 	return {
-		note: state.note
+		note: state.note,
+		
 	}
 }
 

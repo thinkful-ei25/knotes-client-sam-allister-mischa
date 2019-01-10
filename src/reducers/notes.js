@@ -17,7 +17,9 @@ export default function noteReducer(state=initialState, action){
     return {
       ...state,
       loading: true,
-      error: null
+      error: null,
+      
+      
     };
   } else if(action.type === FETCH_NOTE_SUCCESS){
     return {
@@ -25,14 +27,17 @@ export default function noteReducer(state=initialState, action){
       loading: false,
       note: action.note.note,
       next: action.note.next,
-      error: null
+      error: null,
+      
+      
     };
   } else if(action.type === FETCH_NOTE_ERROR){
     return {
       ...state,
       loading: false,
       note: null,
-      error: action.error
+      error: action.error,
+      
     };
   }
   else if(action.type === ANSWER_ACTION_SUCCESS) {
@@ -40,7 +45,8 @@ export default function noteReducer(state=initialState, action){
       ...state,
       loading: false,
       feedback: action.note.feedback,
-      feedbackNext: action.note.next
+      feedbackNext: action.note.next,
+      submitted: true
     }
   }
   return state;

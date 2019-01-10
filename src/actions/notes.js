@@ -23,6 +23,11 @@ export const answerActionSuccess = (note) => ({
   note
 })
 
+export const NEXT_NOTE = 'NEXT_NOTE';
+export const nextNote = (note) => ({
+  
+})
+
 export const fetchNote = () => (dispatch, getState) => {
   dispatch(fetchNoteRequest());
   const authToken = getState().auth.authToken;
