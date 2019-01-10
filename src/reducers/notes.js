@@ -2,7 +2,8 @@ import {
   FETCH_NOTE_REQUEST,
   FETCH_NOTE_SUCCESS,
   FETCH_NOTE_ERROR,
-  ANSWER_ACTION_SUCCESS
+  ANSWER_ACTION_SUCCESS,
+  NEXT_NOTE
 } from '../actions/notes';
 
 const initialState = {
@@ -47,6 +48,16 @@ export default function noteReducer(state=initialState, action){
       feedback: action.note.feedback,
       feedbackNext: action.note.next,
       submitted: true
+    }
+  }
+  else if (action.type === NEXT_NOTE) {
+    return {
+      ...state,
+      note: action.next,
+      next: action.nextnext,
+      submitted: false,
+      feedback: null,
+      feedbackNext: null
     }
   }
   return state;

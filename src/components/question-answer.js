@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchNote, answerAction } from '../actions/notes'
+import { fetchNote, answerAction, nextNote } from '../actions/notes'
 
 export class Question extends React.Component {
 	componentDidMount() {
@@ -22,7 +22,9 @@ export class Question extends React.Component {
 	handleNext(e) {
 		e.preventDefault()
 		console.log('next clicked')
-		// this.props.dispatch(nextNote())
+		if (this.props.note.submitted) {
+		this.props.dispatch(nextNote(this.props.note.next, this.props.note.feedbackNext))
+		}
 	}
 
 	render() {
