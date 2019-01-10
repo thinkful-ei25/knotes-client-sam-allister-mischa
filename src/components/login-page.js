@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Input from './input';
 
@@ -11,6 +11,7 @@ export function Login(props) {
     <Fragment>
       <h2>Login to Knotes!</h2>
       <Input />
+      <Link to='/register'>Register</Link>
     </Fragment>
 // two input fields --> username, password
   )

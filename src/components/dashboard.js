@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
     return (
       <div>
         <div>
-          <Link onClick={() => this.logOut()} to="/login">Log Out</Link>
+          <Link onClick={() => this.logOut()} to="/">Log Out</Link>
           <Link to="/dashboard/progress">Progress</Link>
           <Link to="/dashboard">Home</Link>
         </div>

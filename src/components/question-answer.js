@@ -16,6 +16,7 @@ export class Question extends React.Component {
 		if (answer && !this.props.note.submitted) {
 			this.props.dispatch(answerAction(answer))
 		}
+		e.target.answer.value = ''
 
 	}
 
@@ -23,7 +24,7 @@ export class Question extends React.Component {
 		e.preventDefault()
 		console.log('next clicked')
 		if (this.props.note.submitted) {
-		this.props.dispatch(nextNote(this.props.note.next, this.props.note.feedbackNext))
+			this.props.dispatch(nextNote(this.props.note.next, this.props.note.feedbackNext))
 		}
 	}
 
@@ -35,15 +36,27 @@ export class Question extends React.Component {
 				<div>
 					<form onSubmit={(e) => this.handleSubmit(e)}>
 						<img src={this.props ? this.props.note.note : '#'} alt="note"></img>
+						{this.props.note.submitted ? 
+						<div>
+						<p>{this.props.note.feedback}</p>
+						<button onClick={(e) => this.handleNext(e)}>Next</button>
+						</div> : 
+						<div>
 						<label htmlFor="answer">Answer:</label>
 						<input type="text" name="answer" id="answer"></input>
 						<input type="submit" value="submit"></input>
-						<button onClick={(e) => this.handleNext(e)}>Next</button>
+						</div>}
+						
 					</form>
-					<p>{this.props.note.feedback}</p>
+					
 				</div>
 			)
-		} else {
+		
+		
+		}
+		 
+		
+		else {
 			return (
 				<div><p>loading...</p></div>
 			)
@@ -56,7 +69,7 @@ export const mapStatetoProps = state => {
 	console.log('questions:', state)
 	return {
 		note: state.note,
-		
+
 	}
 }
 
