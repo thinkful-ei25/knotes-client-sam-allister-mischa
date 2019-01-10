@@ -6,7 +6,7 @@ export const fetchNoteRequest = () => ({
 });
 
 export const FETCH_NOTE_SUCCESS = 'FETCH_NOTE_SUCCESS';
-export const fetchNoteSuccess = note => ({
+export const fetchNoteSuccess = (note) => ({
   type: FETCH_NOTE_SUCCESS,
   note
 });
@@ -16,6 +16,19 @@ export const fetchNoteError = error => ({
   type: FETCH_NOTE_ERROR,
   error
 });
+
+export const ANSWER_ACTION_SUCCESS = 'ANSWER_ACTION_SUCCESS';
+export const answerActionSuccess = (note) => ({
+  type: ANSWER_ACTION_SUCCESS,
+  note
+})
+
+export const NEXT_NOTE = 'NEXT_NOTE';
+export const nextNote = (next, nextnext) => ({
+  type: NEXT_NOTE,
+  next,
+  nextnext
+})
 
 export const fetchNote = () => (dispatch, getState) => {
   dispatch(fetchNoteRequest());
@@ -41,5 +54,33 @@ export const fetchNote = () => (dispatch, getState) => {
     .then(res=>res.json())
     .then(notes=>dispatch(fetchNoteSuccess(notes)))
     .catch(err=>dispatch(fetchNoteError(err)));
-} 
+}
+
+export const answerAction = (answer) => (dispatch, getState) => {
+  console.log('answerinsideaction:', answer)
+  dispatch(fetchNoteRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/notes`,{
+    method: 'PUT',
+    body: JSON.stringify({answer : answer }),
+    headers: {AUthorization: `Bearer ${authToken}`, 'Content-Type': 'application/json'}
+  })
+  .then((res)=>{
+    if(!res.ok){
+      const contentType = res.headers.get('content-type');
+      if(contentType && contentType.startsWith('application/json')){
+        return res.json().then(err=> Promise.reject(err));
+      }
+
+      const error = new Error(res.status);
+      error.code = res.status;
+      return Promise.reject(error);
+    }
+    console.log(res);
+    return res;
+  })
+  .then(res=>res.json())
+  .then(notes=>dispatch(answerActionSuccess(notes)))
+  .catch(err=>dispatch(fetchNoteError(err)));
+}
 
