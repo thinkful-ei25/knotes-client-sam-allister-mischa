@@ -4,7 +4,8 @@ import {
   FETCH_NOTE_ERROR,
   FETCH_PROGRESS_ERROR,
   FETCH_PROGRESS_REQUEST,
-  FETCH_PROGRESS_SUCCESS
+  FETCH_PROGRESS_SUCCESS,
+  ANSWER_ACTION_SUCCESS
 } from '../actions/notes';
 
 const initialState = {
@@ -20,21 +21,27 @@ export default function noteReducer(state=initialState, action){
     return {
       ...state,
       loading: true,
-      error: null
+      error: null,
+      
+      
     };
   } else if(action.type === FETCH_NOTE_SUCCESS){
     return {
       ...state,
       loading: false,
-      note: action.note,
-      error: null
+      note: action.note.note,
+      next: action.note.next,
+      error: null,
+      
+      
     };
   } else if(action.type === FETCH_NOTE_ERROR){
     return {
       ...state,
       loading: false,
       note: null,
-      error: action.error
+      error: action.error,
+      
     };
   } else if(action.type === FETCH_PROGRESS_REQUEST){
     return {
@@ -56,6 +63,15 @@ export default function noteReducer(state=initialState, action){
       progress: action.progress,
       error: null
     };
+  }
+  else if(action.type === ANSWER_ACTION_SUCCESS) {
+    return {
+      ...state,
+      loading: false,
+      feedback: action.note.feedback,
+      feedbackNext: action.note.next,
+      submitted: true
+    }
   }
   return state;
 }

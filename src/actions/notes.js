@@ -6,7 +6,7 @@ export const fetchNoteRequest = () => ({
 });
 
 export const FETCH_NOTE_SUCCESS = 'FETCH_NOTE_SUCCESS';
-export const fetchNoteSuccess = note => ({
+export const fetchNoteSuccess = (note) => ({
   type: FETCH_NOTE_SUCCESS,
   note
 });
@@ -16,6 +16,17 @@ export const fetchNoteError = error => ({
   type: FETCH_NOTE_ERROR,
   error
 });
+
+export const ANSWER_ACTION_SUCCESS = 'ANSWER_ACTION_SUCCESS';
+export const answerActionSuccess = (note) => ({
+  type: ANSWER_ACTION_SUCCESS,
+  note
+});
+
+export const NEXT_NOTE = 'NEXT_NOTE';
+export const nextNote = (note) => ({
+  
+})
 
 export const fetchNote = () => (dispatch, getState) => {
   dispatch(fetchNoteRequest());
@@ -40,13 +51,7 @@ export const fetchNote = () => (dispatch, getState) => {
     .then(res=>res.json())
     .then(notes=>dispatch(fetchNoteSuccess(notes)))
     .catch(err=>dispatch(fetchNoteError(err)));
-} 
-
-export const ANSWER_ACTION_SUCCESS = 'ANSWER_ACTION_SUCCESS';
-export const answerActionSuccess = (note) => ({
-  type: ANSWER_ACTION_SUCCESS,
-  note
-});
+};
 
 export const answerAction = (answer) => (dispatch, getState) => {
   console.log('answerinsideaction:', answer)
@@ -75,6 +80,7 @@ export const answerAction = (answer) => (dispatch, getState) => {
   .then(notes=>dispatch(answerActionSuccess(notes)))
   .catch(err=>dispatch(fetchNoteError(err)));
 };
+
 
 export const FETCH_PROGRESS_REQUEST = 'FETCH_PROGRESS_REQUEST';
 export const fetchProgressRequest = () => ({
