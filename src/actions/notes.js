@@ -24,8 +24,10 @@ export const answerActionSuccess = (note) => ({
 });
 
 export const NEXT_NOTE = 'NEXT_NOTE';
-export const nextNote = (note) => ({
-  
+export const nextNote = (next, nextnext) => ({
+  type: NEXT_NOTE,
+  next,
+  nextnext
 })
 
 export const fetchNote = () => (dispatch, getState) => {
