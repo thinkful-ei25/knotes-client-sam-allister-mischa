@@ -6,7 +6,6 @@ import { throws } from 'assert';
 
 export class Question extends React.Component {
 	componentDidMount() {
-		console.log('component did mount')
 		if (!this.props.note.submitted) {
 			this.props.dispatch(fetchNote());
 			this.props.dispatch(fetchSound());
@@ -42,7 +41,6 @@ export class Question extends React.Component {
 		let color;
 		if (this.props.note.feedback) {
 			let arr = this.props.note.feedback.split(',');
-			console.log(arr[0])
 			if (arr[0] === "Correct") {
 				color = "green";
 			} else {
@@ -62,6 +60,12 @@ export class Question extends React.Component {
 							<div className="feedback-container">
 								<p className={color}>{this.props.note.feedback}</p>
 								<button onClick={(e) => this.handleNext(e)}>Next</button>
+								<div className="feedback-gif">
+									<img src={color==="green" ?"https://i.imgur.com/kHjvNtZ.gif" : "https://media.giphy.com/media/irBW7QKGN90xVBq2w8/giphy.gif"}
+											alt={color==="green" ? "dancing psychadelic shark" : "crying shark"}
+										/>
+								</div>
+								
 							</div> :
 							<div className="answer-form">
 								<label htmlFor="answer">Answer:</label>

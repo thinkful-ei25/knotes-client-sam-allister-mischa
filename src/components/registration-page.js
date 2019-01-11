@@ -12,7 +12,7 @@ export function RegistrationPage(props) {
     
     return (
         <div>
-            <h2>Register for Knotes</h2>
+            <h2>Register for Note Shark</h2>
             <RegistrationForm />
             <p>Already registered? <Link to="/login">Log In</Link></p>
             <Link to="/">Back to landing page</Link>
