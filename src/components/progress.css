@@ -2,7 +2,12 @@ table, th, td {
   border: 1px solid grey;
 }
 
+.progress-container{
+  text-align: center;
+}
+
 table {
+  display: inline-block;
   border-collapse: collapse;
 }
 
@@ -19,3 +24,5 @@ th, td {
 .failing {
   color: red;
 }
+
+

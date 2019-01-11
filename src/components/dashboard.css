@@ -1,23 +1,31 @@
 .nav {
-  display: block;
+  display: inline-block;
   padding-left: 0;
   margin-bottom: 0;
+  margin-top: 0;
   list-style: none;
   background-color: rgb(190, 190, 190);
-  height: 50px;
+  width: 100%;
+  text-align: center;
+}
+
+ul{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nav-item{
   display: inline-block;
-  padding: 0.5rem 0.9rem;
-  float: right;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.nav-link {
-  display: inline-block;
-  padding: 0.5rem 0.9rem;
+.nav-link{
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
 }
-
 
 .question-container{
   width: 50%;
@@ -31,6 +39,7 @@
 img {
   padding: 10px;
   display: block;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -39,18 +48,57 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .answer-form > label {
   margin: 0.75rem;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 #answer {
   margin: 0.75rem;
 }
 
+.answerBtn {
+    font-size: 1.2em;
+    border: 2px solid black; 
+    font-weight: 800;
+    border-radius: 15%;
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(65, 65, 65);
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
 .sound-container > button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.feedback-container {
+  text-align:center;
+}
+
+.feedback-container > p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+@media (min-width: 576px) {
+  img {
+    width: 100%;
+  }
+}
+
+.green{
+  color: green;
+}
+
+.red{
+  color: red;
 }

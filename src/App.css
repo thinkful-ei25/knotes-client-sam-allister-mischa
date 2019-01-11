@@ -91,21 +91,16 @@ textarea {
   line-height: inherit;
 }
 
-button,
-input {
-  overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
+button{
+  font-size: 1.2em;
+  border: 2px solid black; 
+  font-weight: 800;
+  border-radius: 15%;
+  padding: 10px;
+  text-decoration: none;
+  color: rgb(65, 65, 65);
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .container {

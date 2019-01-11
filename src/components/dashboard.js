@@ -27,14 +27,14 @@ class Dashboard extends React.Component {
         {/* <PlaySounds /> */}
         <nav className="nav">
           <ul className="navbar">
-            <li className="nav-item item-3">
-              <Link onClick={() => this.logOut()} to="/" className="nav-link">Log Out</Link>
+            <li className="nav-item item-1">
+              <Link to="/dashboard" className="nav-link">Home</Link>
             </li>
             <li className="nav-item item-2">
               <Link to="/dashboard/progress" className="nav-link">Progress</Link>
             </li>
-            <li className="nav-item item-1">
-              <Link to="/dashboard" className="nav-link">Home</Link>
+            <li className="nav-item item-3">
+              <Link onClick={() => this.logOut()} to="/" className="nav-link">Log Out</Link>
             </li>
           </ul>
         </nav>

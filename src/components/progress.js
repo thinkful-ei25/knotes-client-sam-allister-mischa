@@ -46,7 +46,8 @@ class Progress extends React.Component {
       let progress = this.generateProgress();
       
       return(
-        <div className="container">
+        <div className="container progress-container">
+          <h3>Here's your progress so far!</h3>
           <table>
             <tbody>
               <tr>
