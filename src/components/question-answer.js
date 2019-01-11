@@ -19,7 +19,6 @@ export class Question extends React.Component {
 		e.stopPropagation();
 		let answer = e.target.answer.value
 		answer = answer.toUpperCase()
-		console.log(answer)
 		if (answer && !this.props.note.submitted) {
 			this.props.dispatch(answerAction(answer))
 		}
@@ -30,7 +29,6 @@ export class Question extends React.Component {
 	handleNext(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		console.log('next clicked')
 		if (this.props.note.submitted) {
 			this.props.dispatch(nextNote(this.props.note.next, this.props.note.feedbackNext))
 			this.props.dispatch(fetchSound());
@@ -92,7 +90,6 @@ export class Question extends React.Component {
 }
 
 export const mapStatetoProps = state => {
-	console.log('questions:', state)
 	return {
 		note: state.note,
 

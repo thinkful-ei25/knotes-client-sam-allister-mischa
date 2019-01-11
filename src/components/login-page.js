@@ -23,7 +23,6 @@ export function Login(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return({
     loggedIn : state.auth.user ? state.auth.user.loggedIn : null
   })

@@ -34,7 +34,6 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return ({
     error: state.auth.error,
 })}

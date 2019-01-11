@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerUser, registerSuccess } from '../actions/register'
+import { registerUser, registerSuccess, registerError } from '../actions/register'
 
 
 export function RegistrationForm(props) {
@@ -18,7 +18,7 @@ export function RegistrationForm(props) {
             .then(() => {
                 props.dispatch(registerSuccess())
             })
-            .catch(err => console.log(err))
+            .catch(err => props.dispatch(registerError(err)))
     }
 
     return (
@@ -39,7 +39,6 @@ export function RegistrationForm(props) {
 }
 
 export const mapStatetoProps = (state) => {
-    console.log(state)
     return {
         error: state.register.error
     }

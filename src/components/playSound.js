@@ -6,12 +6,13 @@ const handleSubmit = (audio) => {
 	note.play();
 }
 export default function PlaySounds(props){
-		// console.log(mp3)
 		if(props.sound){
 			return(
-				<button onClick={() => handleSubmit(props.sound.sound)}>Play Note ♪</button>
-			)
+				<button onClick={() => handleSubmit(props.sound.sound)}>Play Note</button>
+				)
 		}else{
 			return null
 		}
+			
+
 }
