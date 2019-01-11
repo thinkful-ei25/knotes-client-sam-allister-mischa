@@ -1,5 +1,5 @@
 import React from 'react';
-import base64 from 'base-64';
+
 
 const handleSubmit = (audio) => {
 	const note = new Audio("data:audio/wav;base64," + audio);
