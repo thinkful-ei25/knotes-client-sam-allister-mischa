@@ -1,0 +1,21 @@
+table, th, td {
+  border: 1px solid grey;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: inherit;
+  vertical-align: top;
+  padding: 0.75rem;
+}
+
+.passing {
+  color: green;
+}
+
+.failing {
+  color: red;
+}
