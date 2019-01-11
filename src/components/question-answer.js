@@ -40,10 +40,12 @@ export class Question extends React.Component {
 
 	render() {
 
+
+
 		if (this.props.note) {
 			return (
-				<div>
-					{<PlaySounds sound={this.props.note.encodedMp3 ? this.props.note.encodedMp3 : ''}/>}
+				<div className="container question-container">
+					{<PlaySounds sound={this.props.note.encodedMp3 ? this.props.note.encodedMp3 : ''} className="soundBtn"/>}
 					<form onSubmit={(e) => this.handleSubmit(e)}>
 						<img src={this.props ? this.props.note.note : '#'} alt="note"></img>
 						{this.props.note.submitted ? 

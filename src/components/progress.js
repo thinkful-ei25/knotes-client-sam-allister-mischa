@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires_login';
 import {fetchProgress} from '../actions/notes';
-import {Link} from 'react-router-dom';
+import './progress.css';
 
 class Progress extends React.Component {
   
@@ -25,12 +25,14 @@ class Progress extends React.Component {
     const progress = progressData.map((note, index)=>{
       let percentage = note.correct/(note.correct+note.incorrect);
       percentage = percentage ? percentage : 0;
+      let color = (percentage >.7 ) ? "passing" : "failing";
+      percentage = Math.floor(percentage*100)+'%';
       return (
         <tr key={index}>
           <td>{note.note}</td>
           <td>{note.correct}</td>
           <td>{note.incorrect}</td>
-          <td>{percentage}</td>
+          <td className={color}>{percentage}</td>
         </tr>
       )
     });
@@ -44,7 +46,7 @@ class Progress extends React.Component {
       let progress = this.generateProgress();
       
       return(
-        <div>
+        <div className="container">
           <table>
             <tbody>
               <tr>
