@@ -45,20 +45,22 @@ export class Question extends React.Component {
 		if (this.props.note) {
 			return (
 				<div className="container question-container">
+				<div className="sound-container">
 					{<PlaySounds sound={this.props.note.encodedMp3 ? this.props.note.encodedMp3 : ''} className="soundBtn"/>}
+				</div>
 					<form onSubmit={(e) => this.handleSubmit(e)}>
 						<img src={this.props ? this.props.note.note : '#'} alt="note"></img>
 						{this.props.note.submitted ? 
 						<div>
 						<p>{this.props.note.feedback}</p>
 						<button onClick={(e) => this.handleNext(e)}>Next</button>
-						</div> : 
-						<div>
-						<label htmlFor="answer">Answer:</label>
-						<input type="text" name="answer" id="answer"></input>
-						<input type="submit" value="submit"></input>
-						</div>}
-						
+							</div> :
+							<div className="answer-form">
+								<label htmlFor="answer">Answer:</label>
+								<input type="text" name="answer" id="answer"></input>
+								<input type="submit" value="submit"></input>
+							</div>
+						}
 					</form>
 					
 				</div>

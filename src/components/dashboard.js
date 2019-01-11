@@ -40,7 +40,7 @@ class Dashboard extends React.Component {
         </nav>
         <div>
 
-          <h2>Welcome {this.props.user ? this.props.user.username : ''}</h2>
+          <h2 className="greeting">Welcome {this.props.user ? this.props.user.username : ''}</h2>
           <Route exact path="/dashboard" component={Question} />
           <Route exact path='/dashboard/progress' component={Progress} />
          
