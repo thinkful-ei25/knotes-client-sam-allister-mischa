@@ -74,10 +74,18 @@ img {
 
 }
 
+.answerBtn:hover{
+  font-size: 1.5em;
+}
+
 .sound-container > button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.sound-container > button:hover {
+  font-size: 1.5em;
 }
 
 .feedback-container {
