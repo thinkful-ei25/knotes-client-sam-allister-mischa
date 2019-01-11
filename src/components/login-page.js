@@ -11,7 +11,8 @@ export function Login(props) {
     <Fragment>
       <h2>Login to Knotes!</h2>
       <Input />
-      <Link to='/register'>Register</Link>
+      <p><Link to='/register'>Register</Link></p>
+      <Link to="/">Back to landing page</Link>
     </Fragment>
 // two input fields --> username, password
   )
