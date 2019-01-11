@@ -12,6 +12,5 @@ export default function PlaySounds(props){
 		}else{
 			return null
 		}
-			
-
+		
 }
