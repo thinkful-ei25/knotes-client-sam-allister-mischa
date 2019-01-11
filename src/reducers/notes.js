@@ -6,7 +6,7 @@ import {
   FETCH_PROGRESS_REQUEST,
   FETCH_PROGRESS_SUCCESS,
   ANSWER_ACTION_SUCCESS,
-  NEXT_NOTE
+  NEXT_NOTE,
 } from '../actions/notes';
 
 const initialState = {
@@ -14,7 +14,8 @@ const initialState = {
   next: null,
   loading: false,
   error: null,
-  progress: []
+  progress: [],
+  encodedMp3: null
 }
 
 export default function noteReducer(state=initialState, action){
@@ -32,6 +33,7 @@ export default function noteReducer(state=initialState, action){
       loading: false,
       note: action.note.note,
       next: action.note.next,
+      encodedMp3: action.note.sound,
       error: null,
     };
   } else if(action.type === FETCH_NOTE_ERROR){
