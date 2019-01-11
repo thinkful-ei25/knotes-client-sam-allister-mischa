@@ -1,0 +1,16 @@
+.registration-container{
+  margin: auto; 
+  width: 50%;
+  text-align: center;
+}
+
+form {
+  display: inline-block;
+}
+input {
+  display: block;
+}
+
+.reg-btn{
+  margin-top: 10px;
+}

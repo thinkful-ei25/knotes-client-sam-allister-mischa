@@ -11,11 +11,11 @@ export function RegistrationPage(props) {
     
     
     return (
-        <div>
+        <div className="container registration-container">
             <h2>Register for Knotes</h2>
             <RegistrationForm />
-            <p>Already registered? <Link to="/login">Log In</Link></p>
-            <Link to="/">Back to landing page</Link>
+            <p>Already registered? <Link to="/login" className="btn2">Log In</Link></p>
+            <Link to="/" className="btn2">Back to landing page</Link>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { registerUser, registerSuccess } from '../actions/register'
-
+import './registration-page.css';
 
 export function RegistrationForm(props) {
     let nameInput;
@@ -29,7 +29,7 @@ export function RegistrationForm(props) {
             <input ref={input => (usernameInput = input)} type="text" id="username" name="username"></input>
             <label htmlFor="password">Password</label>
             <input ref={input => (passwordInput = input)} type="password" id="password" name="password"></input>
-            <button type="submit">
+            <button type="submit" className="reg-btn">
                 Register
             </button>
             <p>{props.error ? props.error.message : ''}</p>
