@@ -10,7 +10,7 @@ export default function PlaySounds(props){
 		if(props.sound){
 			return(
 				<button onClick={() => handleSubmit(props.sound.sound)}>Play Note</button>
-				)
+			)
 
 		}else{
 			return null

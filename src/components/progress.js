@@ -23,12 +23,13 @@ class Progress extends React.Component {
     }
     progressData.sort(compare);
     const progress = progressData.map((note, index)=>{
+      let percentage = note.correct/(note.correct+note.incorrect);
       return (
         <tr key={index}>
           <td>{note.note}</td>
-          <td>{note.mScore}</td>
           <td>{note.correct}</td>
           <td>{note.incorrect}</td>
+          <td>{percentage}</td>
         </tr>
       )
     });
@@ -47,9 +48,9 @@ class Progress extends React.Component {
             <tbody>
               <tr>
                 <th>Note</th>
-                <th>mScore</th>
                 <th>Correct</th>
                 <th>Incorrect</th>
+                <th>Percentage</th>
               </tr>
               {progress}
             </tbody>

@@ -24,10 +24,11 @@ export const answerActionSuccess = (note) => ({
 });
 
 export const NEXT_NOTE = 'NEXT_NOTE';
-export const nextNote = (next, nextnext) => ({
+export const nextNote = (next, nextnext, sound) => ({
   type: NEXT_NOTE,
   next,
-  nextnext
+  nextnext,
+  sound
 })
 
 export const fetchNote = () => (dispatch, getState) => {
@@ -125,3 +126,43 @@ export const fetchProgress = () => (dispatch, getState) => {
     .catch(err=>dispatch(fetchProgressError(err)));
 }
 
+export const FETCH_SOUND_REQUEST = 'FETCH_SOUND_REQUEST';
+export const fetchSoundRequest = () => ({
+  type: FETCH_SOUND_REQUEST
+});
+
+export const FETCH_SOUND_SUCCESS = 'FETCH_Sound_SUCCESS';
+export const fetchSoundSuccess = (sound) => ({
+  type: FETCH_SOUND_SUCCESS,
+  sound
+});
+
+export const FETCH_SOUND_ERROR = 'FETCH_SOUND_ERROR';
+export const fetchSoundError = error => ({
+  type: FETCH_SOUND_ERROR,
+  error
+});
+
+export const fetchSound = () => (dispatch, getState) => {
+  dispatch(fetchSoundRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/notes/sound`,{
+    method: 'GET',
+    headers: {AUthorization: `Bearer ${authToken}`}
+  })
+    .then((res)=>{
+      if(!res.ok){
+        const contentType = res.headers.get('content-type');
+        if(contentType && contentType.startsWith('application/json')){
+          return res.json().then(err=> Promise.reject(err));
+        }
+        const error = new Error(res.status);
+        error.code = res.status;
+        return Promise.reject(error);
+      }
+      return res;
+    })
+    .then(res=>res.json())
+    .then(sound=>dispatch(fetchSoundSuccess(sound)))
+    .catch(err=>dispatch(fetchSoundError(err)));
+}

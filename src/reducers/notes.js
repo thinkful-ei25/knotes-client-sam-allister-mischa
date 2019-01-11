@@ -7,6 +7,9 @@ import {
   FETCH_PROGRESS_SUCCESS,
   ANSWER_ACTION_SUCCESS,
   NEXT_NOTE,
+  FETCH_SOUND_ERROR,
+  FETCH_SOUND_REQUEST,
+  FETCH_SOUND_SUCCESS
 } from '../actions/notes';
 
 const initialState = {
@@ -15,7 +18,8 @@ const initialState = {
   loading: false,
   error: null,
   progress: [],
-  encodedMp3: null
+  encodedMp3: null,
+  nextSound: null
 }
 
 export default function noteReducer(state=initialState, action){
@@ -24,8 +28,7 @@ export default function noteReducer(state=initialState, action){
       ...state,
       loading: true,
       error: null,
-      
-      
+      submitted: false
     };
   } else if(action.type === FETCH_NOTE_SUCCESS){
     return {
@@ -33,8 +36,8 @@ export default function noteReducer(state=initialState, action){
       loading: false,
       note: action.note.note,
       next: action.note.next,
-      encodedMp3: action.note.sound,
       error: null,
+      submitted: false
     };
   } else if(action.type === FETCH_NOTE_ERROR){
     return {
@@ -42,12 +45,14 @@ export default function noteReducer(state=initialState, action){
       loading: false,
       note: null,
       error: action.error,
+      submitted: false
     };
   } else if(action.type === FETCH_PROGRESS_REQUEST){
     return {
       ...state,
       loading: true,
       error: null,
+      submitted: false
     };
   } else if(action.type === FETCH_PROGRESS_ERROR){
     return {
@@ -82,6 +87,25 @@ export default function noteReducer(state=initialState, action){
       feedback: null,
       feedbackNext: null
     }
+  } else if (action.type === FETCH_SOUND_ERROR){
+    return {
+      ...state,
+      encodedMp3: null,
+      error: action.error
+    };
+  } else if (action.type === FETCH_SOUND_SUCCESS){
+    return {
+      ...state,
+      encodedMp3: action.sound,
+      error: null,
+      loading: null
+    };
+  } else if (action.type === FETCH_SOUND_REQUEST){
+    return {
+      ...state,
+      encodedMp3: null,
+      loading: true
+    };
   }
   return state;
 }
