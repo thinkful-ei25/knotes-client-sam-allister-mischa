@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Input from './input';
+import './login-page.css';
 
 export function Login(props) {
   if (props.loggedIn){
@@ -9,10 +10,12 @@ export function Login(props) {
   }
   return (
     <Fragment>
-      <h2>Login to Knotes!</h2>
-      <Input />
-      <p><Link to='/register'>Register</Link></p>
-      <Link to="/">Back to landing page</Link>
+      <div className="login-page">
+        <h2 className="title">Login to Knotes!</h2>
+        <Input />
+        <p><Link to='/register'>Register</Link></p>
+        <Link to="/">Back to landing page</Link>
+      </div>
     </Fragment>
 // two input fields --> username, password
   )

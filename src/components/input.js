@@ -1,6 +1,7 @@
 import React, {Fragment, Component} from 'react';
 import {connect} from 'react-redux';
-import {login} from '../actions/auth'
+import {login} from '../actions/auth';
+import './input.css';
 export class Input extends Component {
 
   onSubmit(e) {
@@ -11,12 +12,14 @@ export class Input extends Component {
   render(){
     return (
       <Fragment>
-        <form onSubmit={e => this.onSubmit(e)}>
-          <input aria-label="input" className="userAuthInput" type="text" placeholder="enter username" ref={input => this.username = input}/>
-          <input aria-label="input" className="userAuthInput" type="password" placeholder="enter password" ref={input => this.password = input}/>
-          <button type="submit">Login</button>
+        <form className="login-form" onSubmit={e => this.onSubmit(e)}>
+          <label for="username-login">Username: </label>
+          <input id="username-login" aria-label="input"  className="userAuthInput" type="text" placeholder="enter username" ref={input => this.username = input}/><br/>
+          <label for="password-login">Password: </label>
+          <input id="password-login"aria-label="input" className="userAuthInput" type="password" placeholder="enter password" ref={input => this.password = input}/><br/>
+          <button id="submit-login" className="login-btn" type="submit">Login</button>
         </form>
-        <div>
+        <div className="login-err">
           {this.props.error ? this.props.error: ""}
         </div>
         
