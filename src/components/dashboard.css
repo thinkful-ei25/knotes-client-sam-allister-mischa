@@ -23,12 +23,34 @@
   width: 50%;
 }
 
-img {
+.greeting {
+  text-align: center;
   padding: 10px;
 }
 
-.soundBtn {
+img {
+  padding: 10px;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
+.answer-form{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.answer-form > label {
+  margin: 0.75rem;
+}
+
+#answer {
+  margin: 0.75rem;
+}
+
+.sound-container > button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
