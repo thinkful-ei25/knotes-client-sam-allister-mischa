@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerUser, registerSuccess } from '../actions/register'
-import './registration-page.css';
+import { registerUser, registerSuccess, registerError } from '../actions/register'
+
 
 export function RegistrationForm(props) {
     let nameInput;
@@ -18,17 +18,17 @@ export function RegistrationForm(props) {
             .then(() => {
                 props.dispatch(registerSuccess())
             })
-            .catch(err => console.log(err))
+            .catch(err => props.dispatch(registerError(err)))
     }
 
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
-            <label htmlFor="name">Name</label>
-            <input ref={input => (nameInput = input)} type="text" id="name" name="name"></input>
-            <label htmlFor="username">Username</label>
-            <input ref={input => (usernameInput = input)} type="text" id="username" name="username"></input>
-            <label htmlFor="password">Password</label>
-            <input ref={input => (passwordInput = input)} type="password" id="password" name="password"></input>
+            <label htmlFor="name">Name: </label>
+            <input ref={input => (nameInput = input)} type="text" id="name" name="name"></input><br/>
+            <label htmlFor="username">Username: </label>
+            <input ref={input => (usernameInput = input)} type="text" id="username" name="username"></input><br/>
+            <label htmlFor="password">Password: </label>
+            <input ref={input => (passwordInput = input)} type="password" id="password" name="password"></input><br/>
             <button type="submit" className="reg-btn">
                 Register
             </button>
@@ -39,7 +39,6 @@ export function RegistrationForm(props) {
 }
 
 export const mapStatetoProps = (state) => {
-    console.log(state)
     return {
         error: state.register.error
     }

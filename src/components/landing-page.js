@@ -15,9 +15,9 @@ export function LandingPage(props) {
     }
     return (
         <div className="landing-container container">
-            <h1 className="title">Welcome to Knotes</h1>
+            <h2 className="title">Welcome to Note Shark</h2>
             <p>
-                Knotes is an app to learn music notes. 
+                Note Shark is an app to learn music notes. 
                 Look at the note and type the correct answer.
                 If the answer is correct, you will receive points. 
                 If the answer is incorrect, you will be shown the correct answer.

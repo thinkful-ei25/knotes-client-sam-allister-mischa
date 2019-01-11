@@ -11,7 +11,7 @@ export function Login(props) {
   return (
     <Fragment>
       <div className="login-page">
-        <h2 className="title">Login to Knotes!</h2>
+        <h2 className="title">Login to Note Shark!</h2>
         <Input />
         <Link to='/register' className="btn2">Register</Link>
         <br/>
@@ -23,7 +23,6 @@ export function Login(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return({
     loggedIn : state.auth.user ? state.auth.user.loggedIn : null
   })

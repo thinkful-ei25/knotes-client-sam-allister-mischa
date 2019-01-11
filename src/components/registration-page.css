@@ -4,13 +4,30 @@
   text-align: center;
 }
 
-form {
-  display: inline-block;
+h1 {
+  margin-top: 15-px;
 }
-input {
+
+.registration-container > form {
   display: block;
+}
+.registration-container > input {
+  display: block;
+}
+
+.registration-container > label {
+  display: block;
+  margin-top: 10px;
+}
+
+#username, #password, #name {
+  margin-bottom: 10px;
 }
 
 .reg-btn{
   margin-top: 10px;
+}
+
+.reg-btn:hover{
+  font-size: 1.5rem
 }

@@ -56,7 +56,6 @@ export const fetchNote = () => (dispatch, getState) => {
 };
 
 export const answerAction = (answer) => (dispatch, getState) => {
-  console.log('answerinsideaction:', answer)
   dispatch(fetchNoteRequest());
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/notes`,{
@@ -75,7 +74,6 @@ export const answerAction = (answer) => (dispatch, getState) => {
       error.code = res.status;
       return Promise.reject(error);
     }
-    console.log(res);
     return res;
   })
   .then(res=>res.json())
