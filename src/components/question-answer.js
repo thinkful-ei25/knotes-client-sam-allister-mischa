@@ -1,16 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchNote, answerAction, nextNote } from '../actions/notes'
+import { fetchNote, answerAction, nextNote, fetchSound } from '../actions/notes'
 import PlaySounds from './playSound';
+import { throws } from 'assert';
 
 export class Question extends React.Component {
 	componentDidMount() {
 		console.log('component did mount')
-		this.props.dispatch(fetchNote());
+		if (!this.props.note.submitted) {
+			this.props.dispatch(fetchNote());
+			this.props.dispatch(fetchSound());
+		}
+		
+		
 	}
 
-	handleSubmit(e) {
-		e.preventDefault()
+	handleSubmit(e) {;
+		e.preventDefault();
+		e.stopPropagation();
 		let answer = e.target.answer.value
 		answer = answer.toUpperCase()
 		console.log(answer)
@@ -22,10 +29,12 @@ export class Question extends React.Component {
 	}
 
 	handleNext(e) {
-		e.preventDefault()
+		e.preventDefault();
+		e.stopPropagation();
 		console.log('next clicked')
 		if (this.props.note.submitted) {
 			this.props.dispatch(nextNote(this.props.note.next, this.props.note.feedbackNext))
+			this.props.dispatch(fetchSound());
 		}
 	}
 
