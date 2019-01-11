@@ -6,6 +6,7 @@ import Question from './question-answer';
 import Progress from './progress';
 import { clearAuth } from '../actions/auth'
 import {clearAuthToken} from '../local-storage';
+// import PlaySounds from './playSound';
 // import { mapStatetoProps } from './components/registration-form';
 
 class Dashboard extends React.Component {
@@ -22,6 +23,7 @@ class Dashboard extends React.Component {
     }
     return (
       <div>
+        {/* <PlaySounds /> */}
         <div>
           <Link onClick={() => this.logOut()} to="/">Log Out</Link>
           <Link to="/dashboard/progress">Progress</Link>

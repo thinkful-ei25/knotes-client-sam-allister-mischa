@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchNote, answerAction, nextNote } from '../actions/notes'
+import PlaySounds from './playSound';
 
 export class Question extends React.Component {
 	componentDidMount() {
@@ -31,9 +32,9 @@ export class Question extends React.Component {
 	render() {
 
 		if (this.props.note) {
-
 			return (
 				<div>
+					{<PlaySounds sound={this.props.note.encodedMp3 ? this.props.note.encodedMp3 : ''}/>}
 					<form onSubmit={(e) => this.handleSubmit(e)}>
 						<img src={this.props ? this.props.note.note : '#'} alt="note"></img>
 						{this.props.note.submitted ? 
@@ -70,6 +71,8 @@ export const mapStatetoProps = state => {
 	return {
 		note: state.note,
 
+	
+		
 	}
 }
 
