@@ -23,13 +23,13 @@ export function RegistrationForm(props) {
 
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
-            <label htmlFor="name">Name</label>
-            <input ref={input => (nameInput = input)} type="text" id="name" name="name"></input>
-            <label htmlFor="username">Username</label>
-            <input ref={input => (usernameInput = input)} type="text" id="username" name="username"></input>
-            <label htmlFor="password">Password</label>
-            <input ref={input => (passwordInput = input)} type="password" id="password" name="password"></input>
-            <button type="submit">
+            <label htmlFor="name">Name: </label>
+            <input ref={input => (nameInput = input)} type="text" id="name" name="name"></input><br/>
+            <label htmlFor="username">Username: </label>
+            <input ref={input => (usernameInput = input)} type="text" id="username" name="username"></input><br/>
+            <label htmlFor="password">Password: </label>
+            <input ref={input => (passwordInput = input)} type="password" id="password" name="password"></input><br/>
+            <button type="submit" className="reg-btn">
                 Register
             </button>
             <p>{props.error ? props.error.message : ''}</p>

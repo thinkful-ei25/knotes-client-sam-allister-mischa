@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const handleSubmit = (audio) => {
 	const note = new Audio("data:audio/wav;base64," + audio);
 	note.play();
