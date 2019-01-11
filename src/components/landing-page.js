@@ -2,12 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Redirect, Link} from 'react-router-dom'
 import './landing-page.css';
+// import { mapStatetoProps } from './question-answer';
 
 
 
 
 export function LandingPage(props) {
-    
+    if(props.loggedIn){
+        return(
+            <Redirect to="/dashboard" />
+        )
+    }
     return (
         <div className="landing-container">
             <h2 className="title">Welcome to Knotes</h2>
@@ -29,5 +34,8 @@ export function LandingPage(props) {
         </div>
     );
 }
+const mapStatetoProps = (state) => ({
+    loggedIn: state.auth.user
+})
 
-export default connect()(LandingPage);
+export default connect(mapStatetoProps)(LandingPage);
