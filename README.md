@@ -36,7 +36,7 @@ Note Shark is hosted on heroku
 front-end: https://github.com/thinkful-ei25/knotes-client-sam-allister-mischa
 
 back-end: 
-https://github.com/thinkful-ei25/knotes-client-sam-allister-mischa
+https://github.com/thinkful-ei25/knotes-server-sam-allister-mischa
 
 ### **`Navigating repos`**
 **Front-end** 
